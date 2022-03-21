@@ -4,22 +4,34 @@
 
 {% endblock %} {% block body %} {% include 'nav.html' %}
 
-<form action="/uploader" method="post" enctype="multipart/form-data">
-  <select name="type" id="">
-    <option value="potato">Potato</option>
-    <option value="rice">Rice</option>
-    <option value="bell-pepper">Bell Pepper</option>
-    <option value="tomato">Tomato</option>
-  </select>
-  <input type="file" name="file" id="" />
+<br />
+<main>
+  <form action="/uploader" method="post" enctype="multipart/form-data">
+    <select name="type" id="" class="select_type">
+      <option value="potato">Potato</option>
+      <option value="rice">Rice</option>
+      <option value="bell-pepper">Bell Pepper</option>
+      <option value="tomato">Tomato</option>
+    </select>
+    <input type="file" name="file" id="" />
+    <input type="submit" name="upload" value="Predict" class="upload_btn" />
+  </form>
   <br />
-  <input type="submit" name="upload" value="Predict" />
-</form>
 
-{% if posts[1] %}
-<img src="{{posts[1]}}" />
-<br />
-{%endif%} {% if posts[0] %} {{posts[0]}} {% elif posts[2]%} {{posts[2]}}
-{{posts[2]['about']}}
-<br />
+  <div class="disease_row">
+    {% if posts[1] %}
+    <div class="disease_col"><img src="{{posts[1]}}" /></div>
+    <br />
+    <div class="disease_col disease_text">
+      {%endif%} {% if posts[0] %} {{posts[0]}} {% elif posts[2]%}
+      <p>
+        Name of the disease:
+        <b style="text-transform: uppercase">{{posts[2]['disease']}}</b>
+      </p>
+      <h4>About</h4>
+      <p>{{posts[2]['about']}}</p>
+    </div>
+  </div>
+  <br />
+</main>
 {%endif%} {% endblock %}

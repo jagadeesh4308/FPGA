@@ -7,9 +7,9 @@ api = 'https://disease-prediction.azurewebsites.net/plant/disease_prediction'
 
 def get_disease(image_file,plantName):
     img = os.path.join(os.getcwd()+"/static/img/uploads/",image_file)
-    # print('!!!!!!!!')
-    # print(img)
-    # print('!!!!!!!!')
+    print('!!!!!!!!')
+    print(img)
+    print('!!!!!!!!')
     with open(img, "rb") as f:
         im_bytes = f.read()        
     im_b64 = base64.b64encode(im_bytes).decode("utf8")
@@ -21,7 +21,7 @@ def get_disease(image_file,plantName):
     # print("im")
     try:
         data = response.json()     
-        # print(data)
+        print(data)
         return data
         # print("#######################################################")
 

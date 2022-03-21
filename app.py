@@ -60,7 +60,7 @@ def uploader():
         file = request.files['file']
         filename = file.filename
         select = request.form.get('type')
-        # print(filename)
+        print(filename)
         if filename == '':
             error = "Filename is empty"
             return render_template('prediction.html',posts=[error]) 
@@ -70,10 +70,10 @@ def uploader():
             return render_template('prediction.html',posts=[error]) 
         file.save(os.path.join(os.getcwd()+"/static/img/uploads/",filename))
     disease_data = get_disease(filename,select)
-    # print('!!!!!!!!!!!!!!!!!!!!!!')
-    # print(select)
-    # print(disease_data)
-    # print('!!!!!!!!!!!!!!!!!!!!!!')
+    print('!!!!!!!!!!!!!!!!!!!!!!')
+    print(select)
+    print(disease_data)
+    print('!!!!!!!!!!!!!!!!!!!!!!')
     filepath = os.path.join("/static/img/uploads/",filename)
     return render_template('prediction.html',posts=[error,filepath,disease_data,select])
 

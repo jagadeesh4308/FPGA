@@ -21,6 +21,8 @@ nav {
   justify-content: space-between;
   padding: 0 1em;
   background-color: #006a3e;
+  font-weight: bold;
+  color: #eee;
 }
 
 .list {
@@ -35,6 +37,7 @@ nav {
 
 .list li a {
   color: #eee;
+  font-size: 14px;
 }
 
 main {
@@ -114,12 +117,50 @@ main {
   justify-content: space-evenly !important;
 }
 
+select {
+  width: 120px;
+  padding: 5px;
+  border: 1px solid green;
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+.upload_btn {
+  border: none;
+  border: 1px solid green;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #006a3e;
+  color: #eee;
+}
+
+.disease_row {
+  display: flex;
+  height: 50vh;
+}
+
+.disease_col {
+  width: 50%;
+  height: 100%;
+  padding: 1em;
+}
+
+.disease_text {
+  overflow: scroll;
+}
+
+.disease_col img {
+  width: 100%;
+  height: 100%;
+}
+
 @media (max-width: 1020px) {
   .row {
     flex-direction: column;
   }
   .row .col {
-    flex-direction: column;
+    flex-direction: column-reverse;
     width: 100%;
   }
   .right {
@@ -130,5 +171,30 @@ main {
   }
   .card {
     margin: 0.5em 0;
+  }
+
+  .row .col .swiper {
+    width: 100%;
+    height: 40vh;
+  }
+  .text {
+    margin-top: 1.5em;
+    width: 92%;
+    font-size: 12px;
+    height: auto;
+    border-radius: 10px;
+  }
+  .text img {
+    border-radius: 10px;
+  }
+  .btn {
+    margin-bottom: 1em;
+  }
+}
+
+@media (max-width: 420px) {
+  .text.main {
+    flex-direction: column;
+    align-items: baseline;
   }
 }

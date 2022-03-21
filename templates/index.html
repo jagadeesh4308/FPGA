@@ -52,7 +52,7 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
       </div>
-      <div>
+      <div class="btn">
         {% if posts[2] %}
         <p
           style="
@@ -61,6 +61,7 @@
             border-radius: 5px;
             padding: 5px;
           "
+          class="recommend_txt"
         >
           Your crop is <b>{{posts[2]}}</b>
         </p>
@@ -87,7 +88,10 @@
           <p>Condition : <b>{{posts[1][2]}}</b></p>
         </div>
       </div>
-      <div class="text" style="background-image: url(../static/img/Nature.png)">
+      <div
+        class="text main"
+        style="background-image: url(../static/img/Nature.png)"
+      >
         <div>
           <p>Nitrogen (N) : <b>{{posts[3]['Nitrogen']}}</b></p>
           <p>Phosporus (P) : <b>{{posts[3]['Phosporus']}}</b></p>
@@ -132,7 +136,7 @@
 </script>
 
 <script type="text/javascript">
-  setInterval("window.location.reload()", 50000);
+  // setInterval("window.location.reload()", 50000);
 </script>
 
 {% endblock %}
