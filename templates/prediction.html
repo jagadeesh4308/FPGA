@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block head %}
+
+<title>Prediction</title>
+
+{% endblock %} {% block body %} {% include 'nav.html' %}
+
+<form action="/uploader" method="post" enctype="multipart/form-data">
+  <select name="type" id="">
+    <option value="potato">Potato</option>
+    <option value="rice">Rice</option>
+    <option value="bell-pepper">Bell Pepper</option>
+    <option value="tomato">Tomato</option>
+  </select>
+  <input type="file" name="file" id="" />
+  <br />
+  <input type="submit" name="upload" value="Predict" />
+</form>
+
+{% if posts[1] %}
+<img src="{{posts[1]}}" />
+<br />
+{%endif%} {% if posts[0] %} {{posts[0]}} {% elif posts[2]%} {{posts[2]}}
+{{posts[2]['about']}}
+<br />
+{%endif%} {% endblock %}

@@ -1,0 +1,138 @@
+{% extends 'base.html' %} {% block head %}
+
+<title>Index</title>
+
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<style>
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+
+{% endblock %} {% block body %} {% include 'nav.html' %}
+<main>
+  <div class="row">
+    <div class="col">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          {% for img in posts[0] %}
+          <div class="swiper-slide">
+            <img src="{{img.src}}" alt="" />
+          </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div>
+        {% if posts[2] %}
+        <p
+          style="
+            background-color: #006a3e;
+            color: #eee;
+            border-radius: 5px;
+            padding: 5px;
+          "
+        >
+          Your crop is <b>{{posts[2]}}</b>
+        </p>
+        {% else %}
+        <a href="/crop-recommendation" class="recommend_btn"
+          >Show predicted crop</a
+        >
+        {% endif %}
+      </div>
+    </div>
+    <div class="col right">
+      <div
+        class="text"
+        style="background-image: url(../static/img/Clouds\ in\ the\ sky.png)"
+      >
+        <img
+          src="http://openweathermap.org/img/w/{{posts[1][3]}}.png"
+          alt=""
+          style="width: 100px; height: 100px"
+        />
+        <div>
+          <p>Temperature : <b>{{posts[3]['Temperature (°C)']}}</b></p>
+          <p>Humidity : <b>{{posts[3]['Humidity']}}</b></p>
+          <p>Condition : <b>{{posts[1][2]}}</b></p>
+        </div>
+      </div>
+      <div class="text" style="background-image: url(../static/img/Nature.png)">
+        <div>
+          <p>Nitrogen (N) : <b>{{posts[3]['Nitrogen']}}</b></p>
+          <p>Phosporus (P) : <b>{{posts[3]['Phosporus']}}</b></p>
+          <p>Pottasium (K) : <b>{{posts[3]['Pottasium']}}</b></p>
+          <p>pH : <b>{{posts[3]['pH']}}</b></p>
+        </div>
+        <div>
+          <p>Water Level : <b>{{posts[3]['Water Level (mm)']}}</b></p>
+          <p>Moisture : <b>{{posts[3]['Moisture (%)']}}</b></p>
+          <p>
+            Electric conductivity :
+            <b>{{posts[3]['Electric conductivity']}}</b>
+          </p>
+          <p>
+            Field temperature : <b>{{posts[3]['Field Temperature (°C)']}}</b>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
+
+<script type="text/javascript">
+  setInterval("window.location.reload()", 50000);
+</script>
+
+{% endblock %}
