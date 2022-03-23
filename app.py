@@ -7,7 +7,7 @@ from cloud import get_sensordata
 from cropPrediction import get_prediction
 from disease import get_disease
 
-from openWeather import get_weather
+from openWeather import *
 
 
 UPLOAD_FOLDER = 'static/img/uploads'
@@ -39,6 +39,7 @@ def recommed_crop():
 
 
 weather = get_weather("8aa59ea88fa14d34cb933f68a151157b",16.7907012,80.8476103)
+forecast = get_forecast("8aa59ea88fa14d34cb933f68a151157b",16.7907012,80.8476103)
 
 @app.route('/')
 def index():
