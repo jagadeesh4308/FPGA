@@ -146,6 +146,13 @@ select {
   padding: 1.5em;
 }
 
+.disease_col_row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .disease_text {
   overflow-y: scroll;
   padding: 1em;
@@ -154,6 +161,26 @@ select {
 .disease_col img {
   width: 100%;
   height: 100%;
+}
+
+.disease_cultural_row {
+  display: flex;
+  height: auto;
+}
+
+.disease_cultural_col {
+  width: calc(100% / 3);
+}
+
+.brand_container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.brand_img {
+  width: 100px !important;
+  height: 100px !important;
 }
 
 @media (max-width: 1020px) {
@@ -190,6 +217,28 @@ select {
   }
   .btn {
     margin-bottom: 1em;
+  }
+  .disease_row {
+    flex-direction: column;
+    height: auto;
+  }
+  .disease_col {
+    width: 100%;
+    padding: 0;
+    margin: 0.5em 0;
+  }
+  .disease_text {
+    height: 50vh;
+  }
+  .disease_cultural_row {
+    flex-direction: column;
+  }
+  .disease_cultural_col {
+    width: 100%;
+    margin: 0.5em 0;
+  }
+  .file_input {
+    width: 220px;
   }
 }
 

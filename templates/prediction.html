@@ -13,10 +13,18 @@
       <option value="bell-pepper">Bell Pepper</option>
       <option value="tomato">Tomato</option>
     </select>
-    <input type="file" name="file" id="" />
+    <input type="file" name="file" id="" class="file_input" />
     <input type="submit" name="upload" value="Predict" class="upload_btn" />
   </form>
   <br />
+
+  {% if posts[2] %}
+  <!-- name -->
+  <center>
+    <b style="text-transform: uppercase">{{posts[2]['disease']}}</b>
+  </center>
+  <br />
+  {%endif%}
 
   <div class="disease_row">
     {% if posts[1] %}
@@ -24,16 +32,85 @@
     <br />
     <div class="disease_col disease_text">
       {%endif%} {% if posts[0] %} {{posts[0]}} {% elif posts[2]%}
-      <p>
-        Name of the disease:
-        <b style="text-transform: uppercase">{{posts[2]['disease']}}</b>
-      </p>
-      <br />
       <!-- about -->
-      <h4>About</h4>
       <p>{{posts[2]['about']}}</p>
     </div>
   </div>
+  <br /><br />
+  <b>chemical control</b>
   <br />
+  <br />
+  <div class="disease_row">
+    <div class="disease_col disease_col_row">
+      <p>{{posts[2]['chemical_control']['chemical_name']}}</p>
+      <div class="brand_container">
+        {% if posts[2]['chemical_control']['brands'] is string %}
+        <img
+          src="static/img/{{posts[2]['chemical_control']['brands']}}"
+          alt=""
+          class="brand_img"
+        />
+        {%else%} {% for image in posts[2]['chemical_control']['brands'] %}
+        <img src="static/img/{{image}}" alt="" class="brand_img" />
+        {%endfor%} {% endif %}
+      </div>
+    </div>
+    <div class="disease_col disease_text">
+      {{posts[2]['chemical_control']['how_to_apply']}}
+    </div>
+  </div>
+  <br />
+  <br />
+  <b>biological control</b>
+  <br />
+  <br />
+  <div class="disease_row">
+    <div class="disease_col disease_col_row">
+      <p>{{posts[2]['biological_control']['name_of_bioagent']}}</p>
+      <div class="brand_container">
+        {% if posts[2]['biological_control']['brands'] is string %}
+        <img
+          src="static/img/{{posts[2]['biological_control']['brands']}}"
+          alt=""
+          class="brand_img"
+        />
+        {%else%} {% for image in posts[2]['biological_control']['brands'] %}
+        <img src="static/img/{{image}}" alt="" class="brand_img" />
+        {%endfor%} {% endif %}
+      </div>
+    </div>
+    <div class="disease_col disease_text">
+      {{posts[2]['biological_control']['how_to_apply']}}
+    </div>
+  </div>
+  <b>cultural control</b>
+  <br />
+  <br />
+  <div class="disease_cultural_row">
+    <div class="disease_cultural_col">
+      <p>How to apply</p>
+      <br />
+      {%if posts[2]['cultural_control']['how_to_apply']%}
+      {{posts[2]['cultural_control']['how_to_apply']}} {%else%}
+      <p>We are updating soon</p>
+      {%endif%}
+    </div>
+    <div class="disease_cultural_col">
+      <p>others</p>
+      <br />
+      {%if posts[2]['cultural_control']['others']%}
+      {{posts[2]['cultural_control']['others']}} {%else%}
+      <p>We are updating soon</p>
+      {%endif%}
+    </div>
+    <div class="disease_cultural_col">
+      <p>process</p>
+      <br />
+      {%if posts[2]['cultural_control']['process']%}
+      {{posts[2]['cultural_control']['process']}} {%else%}
+      <p>We are updating soon</p>
+      {%endif%}
+    </div>
+  </div>
 </main>
 {%endif%} {% endblock %}
