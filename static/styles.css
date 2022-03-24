@@ -5,6 +5,28 @@
   font-family: "Poppins", sans-serif;
 }
 
+/*scrollbar*/
+
+html {
+  --scrollbarBG: #cfd8dc;
+  --thumbBG: #90a4ae;
+}
+body::-webkit-scrollbar {
+  width: 11px;
+}
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+body::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+}
+
 body {
   background: #f1fffc;
 }
@@ -41,6 +63,7 @@ nav {
 }
 
 main {
+  min-height: 70vh;
   padding: 1em;
 }
 
@@ -181,6 +204,31 @@ select {
 .brand_img {
   width: 100px !important;
   height: 100px !important;
+}
+
+.sub_title {
+  text-transform: capitalize;
+  color: #006a3ebb;
+  font-size: 1.5em;
+  padding-left: 1.5em;
+}
+
+.sub_field {
+  text-align: center;
+  color: green;
+  font-size: 1em;
+  text-transform: capitalize;
+}
+
+.chemical_name {
+  padding: 2em 0;
+  color: green;
+  text-transform: capitalize;
+}
+
+.d_text {
+  text-align: center;
+  text-transform: capitalize;
 }
 
 @media (max-width: 1020px) {

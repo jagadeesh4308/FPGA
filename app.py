@@ -53,6 +53,7 @@ def allowed_file(filename):
 def uploader():
     filename = None
     error = None
+    select = None
     if request.method == 'POST':
         if 'file' not in request.files:
             print("Error")
@@ -70,11 +71,14 @@ def uploader():
             error = "This file isn't allowed"
             return render_template('prediction.html',posts=[error]) 
         file.save(os.path.join(os.getcwd()+"/static/img/uploads/",filename))
-    disease_data = get_disease(filename,select)
-    print('!!!!!!!!!!!!!!!!!!!!!!')
-    print(select)
-    print(disease_data)
-    print('!!!!!!!!!!!!!!!!!!!!!!')
+    if select:
+        disease_data = get_disease(filename,select)
+    else:
+        return render_template('prediction.html',posts=[])
+    # print('!!!!!!!!!!!!!!!!!!!!!!')
+    # print(select)
+    # print(disease_data)
+    # print('!!!!!!!!!!!!!!!!!!!!!!')
     filepath = os.path.join("/static/img/uploads/",filename)
     return render_template('prediction.html',posts=[error,filepath,disease_data,select])
 

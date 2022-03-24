@@ -19,9 +19,10 @@
   <br />
 
   {% if posts[2] %}
-  <!-- name -->
   <center>
-    <b style="text-transform: uppercase">{{posts[2]['disease']}}</b>
+    <b style="text-transform: capitalize; color: #296a29; font-size: 1.5em"
+      >{{posts[2]['disease']}}</b
+    >
   </center>
   <br />
   {%endif%}
@@ -32,17 +33,18 @@
     <br />
     <div class="disease_col disease_text">
       {%endif%} {% if posts[0] %} {{posts[0]}} {% elif posts[2]%}
-      <!-- about -->
       <p>{{posts[2]['about']}}</p>
     </div>
   </div>
   <br /><br />
-  <b>chemical control</b>
+  <p class="sub_title">chemical control</p>
   <br />
   <br />
   <div class="disease_row">
     <div class="disease_col disease_col_row">
-      <p>{{posts[2]['chemical_control']['chemical_name']}}</p>
+      <p class="chemical_name">
+        {{posts[2]['chemical_control']['chemical_name']}}
+      </p>
       <div class="brand_container">
         {% if posts[2]['chemical_control']['brands'] is string %}
         <img
@@ -55,18 +57,19 @@
         {%endfor%} {% endif %}
       </div>
     </div>
-    <div class="disease_col disease_text">
-      {{posts[2]['chemical_control']['how_to_apply']}}
+    <p class="disease_col disease_text">{{posts[2]['chemical_control']['how_to_apply']}}</p>
     </div>
   </div>
   <br />
   <br />
-  <b>biological control</b>
+  <p class="sub_title">biological control</p>
   <br />
   <br />
   <div class="disease_row">
     <div class="disease_col disease_col_row">
-      <p>{{posts[2]['biological_control']['name_of_bioagent']}}</p>
+      <p class="chemical_name">
+        {{posts[2]['biological_control']['name_of_bioagent']}}
+      </p>
       <div class="brand_container">
         {% if posts[2]['biological_control']['brands'] is string %}
         <img
@@ -80,37 +83,49 @@
       </div>
     </div>
     <div class="disease_col disease_text">
-      {{posts[2]['biological_control']['how_to_apply']}}
+      <p>{{posts[2]['biological_control']['how_to_apply']}}</p>
     </div>
   </div>
-  <b>cultural control</b>
+  <br /><br />
+  <p class="sub_title">cultural control</p>
   <br />
   <br />
   <div class="disease_cultural_row">
     <div class="disease_cultural_col">
-      <p>How to apply</p>
+      <p class="sub_field">How to apply</p>
       <br />
       {%if posts[2]['cultural_control']['how_to_apply']%}
       {{posts[2]['cultural_control']['how_to_apply']}} {%else%}
-      <p>We are updating soon</p>
+      <p class="d_text">We are updating soon</p>
       {%endif%}
     </div>
     <div class="disease_cultural_col">
-      <p>others</p>
+      <p class="sub_field">others</p>
       <br />
       {%if posts[2]['cultural_control']['others']%}
-      {{posts[2]['cultural_control']['others']}} {%else%}
-      <p>We are updating soon</p>
+      <p class="d_text">{{posts[2]['cultural_control']['others']}}</p> {%else%}
+      <p class="d_text">We are updating soon</p>
       {%endif%}
     </div>
     <div class="disease_cultural_col">
-      <p>process</p>
+      <p class="sub_field">process</p>
       <br />
       {%if posts[2]['cultural_control']['process']%}
-      {{posts[2]['cultural_control']['process']}} {%else%}
-      <p>We are updating soon</p>
+      <p class="d_text">{{posts[2]['cultural_control']['process']}}</p> {%else%}
+      <p class="d_text">We are updating soon</p>
       {%endif%}
     </div>
   </div>
 </main>
-{%endif%} {% endblock %}
+{%endif%}
+
+{% if posts[2] %}
+<br />
+{% include 'footer.html' %}
+
+<br />
+{% endif %}
+
+
+{% endblock %}
+
