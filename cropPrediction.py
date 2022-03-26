@@ -4,16 +4,16 @@ from cloud import get_sensordata
 
 api = r'https://crop-recommendation.azurewebsites.net/plant/crop_recommendation'
 
-res = get_sensordata()['data']
+res = get_sensordata()
 # print(res)
 
 def get_prediction():
     data = {
         "data": {
-            'N': res['Nitrogen'],
-            'P': res['Phosporus'],
-            'K': res['Pottasium'], 
-            'temperature': res['Temperature (°C)'], 
+            'N': res['Nitro'],
+            'P': res['Phosp'],
+            'K': res['Potas'], 
+            'temperature': res['Temp'], 
             'humidity': res['Humidity'],
             'ph': res['pH']
             }

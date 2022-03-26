@@ -22,7 +22,7 @@ slider = [
     {'src':'https://cdn.pixabay.com/photo/2017/06/11/02/05/wheat-2391348_960_720.jpg'}
 ]
 
-sensor_data = get_sensordata()['data']
+sensor_data = get_sensordata()
 
 pred_crop = None
 
