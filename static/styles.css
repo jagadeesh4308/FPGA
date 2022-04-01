@@ -288,11 +288,18 @@ select {
   .file_input {
     width: 220px;
   }
+  .d-row {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width: 420px) {
   .text.main {
     flex-direction: column;
     align-items: baseline;
+  }
+  .footer {
+    margin-top: 30vh;
   }
 }

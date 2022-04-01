@@ -6,7 +6,10 @@
 
 <br />
 <main>
-  <form action="/uploader" method="post" enctype="multipart/form-data">
+  <div class="d-row" style="background: #00800040;display: flex; padding: 20px; justify-content: space-evenly;">
+    <p>Choose your defected crop type and image:</p>
+    <br>
+    <form action="/uploader" method="post" enctype="multipart/form-data">
     <select name="type" id="" class="select_type">
       <option value="potato">Potato</option>
       <option value="rice">Rice</option>
@@ -16,6 +19,7 @@
     <input type="file" name="file" id="" class="file_input" />
     <input type="submit" name="upload" value="Predict" class="upload_btn" />
   </form>
+  </div>
   <br />
 
   {% if posts[2] %}

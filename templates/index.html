@@ -44,7 +44,7 @@
         <div class="swiper-wrapper">
           {% for img in posts[0] %}
           <div class="swiper-slide">
-            <img src="{{img.src}}" alt="" />
+            <img src="/static/img/downloads/{{img}}" alt="" />
           </div>
           {% endfor %}
         </div>
@@ -52,24 +52,43 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
       </div>
-      <div class="btn">
-        {% if posts[2] %}
-        <p
-          style="
-            background-color: #006a3e;
-            color: #eee;
-            border-radius: 5px;
-            padding: 5px;
-          "
-          class="recommend_txt"
-        >
-          Your crop is <b>{{posts[2]}}</b>
-        </p>
-        {% else %}
-        <a href="/crop-recommendation" class="recommend_btn"
-          >Show predicted crop</a
-        >
-        {% endif %}
+      <div style="display: flex">
+        <div class="btn">
+          {% if posts[2] %}
+          <p
+            style="
+              background-color: #006a3e;
+              color: #eee;
+              border-radius: 5px;
+              padding: 2px 5px;
+            "
+            class="recommend_txt"
+          >
+            Your crop is <b>{{posts[2]}}</b>
+          </p>
+          {% else %}
+          <a href="/crop-recommendation" class="recommend_btn"
+            >Show predicted crop</a
+          >
+          {% endif %}
+        </div>
+        &nbsp;&nbsp;
+        <div class="btn">
+          {% if posts[5]%}
+          <p
+            style="
+              background-color: #006a3e;
+              color: #eee;
+              border-radius: 5px;
+              padding: 2px 5px;
+            "
+          >
+            Your crop registered on {{posts[5]}}
+          </p>
+          {% else %}
+          <a href="/crop-register" class="recommend_btn">Register crop</a>
+          {% endif %}
+        </div>
       </div>
     </div>
     <div class="col right">
@@ -83,11 +102,13 @@
           style="width: 100px; height: 100px"
         />
         <div>
-          <p>Temperature : <b>{{posts[3]['Temp']}}</b></p>
-          <!-- <p>Humidity : <b>{{posts[3]['Humidity']}}</b></p> -->
+          <p>Temperature : <b>{{posts[1][0]}}</b></p>
+          <!-- <p>Temperature : <b>{{posts[4]['temperature']|round|int}}</b></p> -->
+          <p>Humidity : <b>{{posts[4]['humidity']|round|int}}</b></p>
           <p>Condition : <b>{{posts[1][2]}}</b></p>
         </div>
       </div>
+      <p>weather forecast</p>
       <div
         class="text main"
         style="background-image: url(../static/img/Nature.png)"
@@ -110,6 +131,8 @@
       </div>
     </div>
   </div>
+  <!-- write here -->
+  <p>Stage</p>
 </main>
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -133,9 +156,9 @@
   });
 </script>
 
-<script type="text/javascript">
-  // setInterval("window.location.reload()", 50000);
-</script>
+<!-- <script type="text/javascript">
+  setInterval("window.location.reload()", 5000);
+</script> -->
 
 <br />
 
