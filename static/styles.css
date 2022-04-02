@@ -232,6 +232,9 @@ select {
 }
 
 @media (max-width: 1020px) {
+  .fertilizer-row {
+    flex-direction: column;
+  }
   .row {
     flex-direction: column;
   }

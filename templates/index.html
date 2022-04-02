@@ -85,7 +85,7 @@
           >
             Your crop registered on {{posts[5]}}
           </p>
-          {% else %}
+          {% elif not posts[7] %}
           <a href="/crop-register" class="recommend_btn">Register crop</a>
           {% endif %}
         </div>
@@ -132,7 +132,65 @@
     </div>
   </div>
   <!-- write here -->
-  <p>Stage</p>
+
+  <br /><br />
+  <center>
+    {%if posts[6]%}
+    <h3>Your crop is in {{posts[6]}}</h3>
+    {%endif%}
+  </center>
+  <br />
+  {%if posts[7]%}
+  <div
+    style="display: flex; align-items: center; justify-content: space-evenly"
+    class="fertilizer-row"
+  >
+    <div>
+      {%if posts[3]['Nitro'] >
+      posts[7]['Nitrogen']['critical']['amount_of_fertilizer']%}
+      <p>
+        Type of fertilizer :
+        <b>{{posts[7]['Nitrogen']['critical']['type_of_fertilizer']}}</b>
+      </p>
+      <p>Recommended brand</p>
+      <img
+        src="static/img/{{posts[7]['Nitrogen']['critical']['brands']}}"
+        alt=""
+      />
+      {%endif%}
+    </div>
+    <br />
+    <div>
+      {%if posts[3]['Phosp'] >
+      posts[7]['Phosphorus']['critical']['amount_of_fertilizer']%}
+      <p>
+        Type of fertilizer :
+        <b>{{posts[7]['Phosphorus']['critical']['type_of_fertilizer']}}</b>
+      </p>
+      <p>Recommended brand</p>
+      <img
+        src="static/img/{{posts[7]['Phosphorus']['critical']['brands']}}"
+        alt=""
+      />
+      {%endif%}
+    </div>
+    <br />
+    <div>
+      {%if posts[3]['Potas'] >
+      posts[7]['Potassium']['critical']['amount_of_fertilizer']%}
+      <p>
+        Type of fertilizer :
+        <b>{{posts[7]['Potassium']['critical']['type_of_fertilizer']}}</b>
+      </p>
+      <p>Recommended brand</p>
+      <img
+        src="static/img/{{posts[7]['Potassium']['critical']['brands']}}"
+        alt=""
+      />
+      {%endif%}
+    </div>
+  </div>
+  {%endif%}
 </main>
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

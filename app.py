@@ -38,23 +38,34 @@ rfs = get_rfsdata()
 fertilizers_data = json.load(open('fertilizersnew.json'))
 
 days_count = None
-phase = None
-with open('register.txt') as f:
-    fetch_start = f.readlines()[0]
-    start = datetime.strptime(fetch_start, '%Y-%m-%d').date()
-    days_count = (start - date.today()).days * -1
-    if(days_count>=1 and days_count<=25):
-        phaseName = 'Mid-Tillering'
-        phaseData = fertilizers_data['Mid-Tillering']
-    elif(days_count>=25 and days_count<=27):
-        phaseName = 'Maximum-Tillering'
-        phaseData = fertilizers_data['Maximum-Tillering']
-    # elif(days_count>=28 and days_count<=29):
-    #     phase = "Panicle-Initiation"
-    # elif(days_count>=29 and days_count<=105):
-    #     phase = "Flag-Leaf"
+phaseName = None
+phaseData = None
 
-print(phaseData)
+if not os.path.exists('register.txt'):
+        with open('register.txt', 'w') as f:
+            f.write(str(date.today()))
+else:
+    with open('register.txt') as f:
+        fetch_start = f.readlines()[0]
+        start = datetime.strptime(fetch_start, '%Y-%m-%d').date()
+        days_count = (start - date.today()).days * -1
+        # print(days_count)
+        if(days_count>=1 and days_count<=25):
+            phaseName = 'Mid-Tillering'
+            phaseData = fertilizers_data['Mid-Tillering']
+        elif(days_count>=25 and days_count<=27):
+            phaseName = 'Maximum-Tillering'
+            phaseData = fertilizers_data['Maximum-Tillering']
+            # elif(days_count>=28 and days_count<=29):
+            #     phase = "Panicle-Initiation"
+            # elif(days_count>=29 and days_count<=105):
+            #     phase = "Flag-Leaf"
+
+# print(phaseName)
+
+    
+
+#print(phaseData)
 
 
 pred_crop = None
@@ -69,21 +80,23 @@ def recommed_crop():
     else:
         with open('recommend.txt') as f:
             pred_crop = f.readlines()[0]
-    return render_template('index.html',posts=[slider,weather,pred_crop,sensor_data,rfs,registered_date])
+    return render_template('index.html',posts=[slider,weather,pred_crop,sensor_data,rfs,registered_date,phaseName,phaseData])
 
 @app.route('/crop-register')
 def crop_register():
+    registered_date = None 
     if not os.path.exists('register.txt'):
         with open('register.txt', 'w') as f:
             f.write(str(date.today()))
     else:
         with open('register.txt') as f:
             registered_date = f.readlines()[0]
-    return render_template('index.html',posts=[slider,weather,pred_crop,sensor_data,rfs,registered_date])
+    return render_template('index.html',posts=[slider,weather,pred_crop,sensor_data,rfs,registered_date,phaseName,phaseData])
 
 
 weather = get_weather("8aa59ea88fa14d34cb933f68a151157b",16.7907012,80.8476103)
 forecast = get_forecast("8aa59ea88fa14d34cb933f68a151157b",16.7907012,80.8476103)
+print(forecast)
 
 @app.route('/')
 def index():

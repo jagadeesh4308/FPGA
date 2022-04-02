@@ -26,7 +26,7 @@ def get_forecast(api_key,lat,lon):
     for i in response['daily']:
         temps.append(i['temp']['day'])
         desc.append(i['weather'][0]['description'])
-    # print(temps)
-    # print(desc)
+    print(temps)
+    print(desc)
 
 # get_weather(api_key,lat,lon)

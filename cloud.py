@@ -42,7 +42,7 @@ def get_rfsdata():
 def get_imagedata():
 
     try:
-        blob_client = container1_client.get_blob_client(blob='crop.jpg')
+        blob_client = container1_client.get_blob_client(blob='1.jpg')
         c = len(os.listdir('static/img/downloads'))
 
         file_name = f"static/img/downloads/{c}.jpg"
